@@ -102,11 +102,15 @@ export default {
     },
     preview(src, $event) {
       if (!this.imageUrls.length) return;
-      wx.previewImage({
-        current: src,
-        urls: this.imageUrls,
-      });
-      this.$emit('preview', src, $event);
+      if (!$event.currentTarget.dataset.href) {
+        wx.previewImage({
+          current: src,
+          urls: this.imageUrls,
+        });
+        this.$emit('preview', src, $event);
+      } else {
+        this.$emit('navigate', $event.currentTarget.dataset.href, $event);
+      }
     },
     removeImageUrl(src) {
       const { imageUrls } = this;
