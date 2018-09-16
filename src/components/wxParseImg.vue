@@ -4,6 +4,7 @@
     :lazy-load="node.attr.lazyLoad"
     :class="node.classStr"
     :style="newStyleStr || node.styleStr"
+    :data-href="node.dataset.href"
     :data-src="node.attr.src"
     :src="node.attr.src"
     @tap="wxParseImgTap"
